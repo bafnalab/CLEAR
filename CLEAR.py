@@ -20,7 +20,7 @@ def processSyncFileLine(x,dialellic=True):
         return pd.concat([z[ref].astype(int).rename('C'), (z[ref] + z[alt]).rename('D')], axis=1).stack()
 
 
-def loadSync(fname = '/home/arya/workspace/CLEAR/sample_data/popoolation2/F37.sync'):
+def loadSync(fname = './sample_data/popoolation2/F37.sync'):
     print 'loading',fname
     cols=pd.read_csv(fname.replace('.sync','.pops'), sep='\t', header=None, comment='#').iloc[0].apply(lambda x: map(int,x.split(','))).tolist()
     data=pd.read_csv(fname, sep='\t', header=None).set_index(range(3))
