@@ -4,7 +4,8 @@
 CLEAR is a tool for identifying selection in time-series pooled-sequencing data. A bioRxiv preprint is available [here](http://biorxiv.org/content/early/2016/10/13/080085).
 
 ##Requirements
-CLEAR is written in python which uses `numba` and `pandas` packages. 
+CLEAR is written in python which uses `numba` and `pandas` packages.You can install required packages by running
+
 `conda install pandas numba`
 
 ##Running

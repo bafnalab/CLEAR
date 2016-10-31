@@ -63,8 +63,8 @@ def computePowers(T,powers):
 
 
 def precomputeTransition(data, sh,N  ):
-    print  'precomputing for',sh
     s,h=sh
+    print  'Precomputing transitions for s={:.3f} h={:2f}'.format(s,h)
     powers=np.unique(np.concatenate(Powers(data.xs('D',level='READ',axis=1)).tolist()))
     T = Markov.computeTransition(s, N, h=h, takeLog=False)
     Tn=computePowers(T,powers)
@@ -145,7 +145,6 @@ def precomputeCDandEmissions(data):
     return emissions,CDEidx
 
 def precomputeTransitions(data,rangeS=np.arange(-0.5,0.5001,0.1),rangeH=[0.5],N=500):
-    print 'Precomputing Transitions'
     SS,HH=np.meshgrid(np.round(rangeS,3),np.round(rangeH,3))
     SH=zip(SS.reshape(-1), HH.reshape(-1))
     return pd.Series(map(lambda sh: precomputeTransition(data,sh,N),SH),index=pd.MultiIndex.from_tuples(SH,names=['s','h'])).xs(0.5,level='h')
